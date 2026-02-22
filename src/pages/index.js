@@ -494,16 +494,22 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                     </div>
                   </div>
 
-                  {/* Contact Button - Purple Gradient */}
-                  <button 
-                    onClick={() => setIsContactModalOpen(true)}
+                 {/* View Portfolio Button */}
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('portfolio');
+                      if (el) {
+                        const offset = el.getBoundingClientRect().top + window.pageYOffset - -20;
+                        window.scrollTo({ top: offset, behavior: 'smooth' });
+                      }
+                    }}
                     className="px-4 py-2 rounded-lg text-sm font-semibold transition-all font-['Nunito'] drop-shadow-lg hover:scale-105 text-white"
                     style={{
                       background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
                       boxShadow: '0 4px 16px rgba(168, 85, 247, 0.3)',
                     }}
                   >
-                    Contact Me
+                    View Portfolio
                   </button>
                 </div>
               </div>
