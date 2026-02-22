@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Github, Mail, Facebook, Eye, Palette } from 'lucide-react';
 import Image from 'next/image';
@@ -247,6 +248,7 @@ function AnimatedRoles({ roles }) {
 
 // Hero Section Component
 function HeroSection() {
+  const router = useRouter();
   const [tiltStyle, setTiltStyle] = useState({});
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   
@@ -378,7 +380,8 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
             transition={{ delay: 2 }}
             className="flex gap-4 pt-4"
           >
-            <button 
+           <button
+              onClick={() => router.push('/projects')}
               className="px-4 py-2.5 md:px-6 md:py-3 text-white rounded-full font-semibold flex items-center gap-2 hover:shadow-2xl hover:scale-105 transition-all duration-300 font-['Nunito'] text-sm md:text-base whitespace-nowrap"
               style={{
                 background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #ec4899 100%)',
@@ -434,15 +437,14 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
           }}
           className="relative flex items-center justify-center"
         >
-          <div className="p-[1px] rounded-3xl" style={{ background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)' }}>
           <GlareHover
-            width="350px"
-            height="420px"
-            background="rgba(255, 255, 255, 0.95)"
-            borderRadius="24px"
-            borderColor="rgba(168, 85, 247, 0.4)"
-            glareColor="#ec4899"
-            glareOpacity={0.6}
+  width="350px"
+  height="420px"
+  background="rgba(255, 255, 255, 0.95)"
+  borderRadius="24px"
+  borderColor="rgba(168, 85, 247, 0.4)"
+  glareColor="#ffffff"
+  glareOpacity={0.7}
             glareAngle={-30}
             glareSize={400}
             transitionDuration={3500}
@@ -457,7 +459,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
               {/* Card Content with Image as Background */}
               <div className="relative w-full h-full">
                 {/* Background Image - Full Card */}
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 z-0">
                   <Image
                     src="/image/image1.png"
                     alt="Aizel"
@@ -470,8 +472,8 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                 </div>
 
                 {/* Bottom Section - Blur Container with Purple Tint */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between border-t border-purple-300/30">
-                  <div className="flex items-center gap-3">
+                <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between border-t border-purple-300/30 z-10">
+                <div className="flex items-center gap-3">
                     {/* Small Circle Avatar */}
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
                       <Image
@@ -506,7 +508,6 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
               </div>
             </div>
           </GlareHover>
-          </div>
         </motion.div>
       </div>
 

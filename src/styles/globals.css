@@ -56,7 +56,10 @@ body {
   background-position:
     -100% -100%,
     0 0;
+  z-index: 999;
+  pointer-events: none;
 }
+
 
 .glare-hover:hover {
   cursor: pointer;
