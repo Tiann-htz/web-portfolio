@@ -392,6 +392,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
               View My Work
             </button>
             <button 
+              onClick={() => setIsContactModalOpen(true)}
               className="bg-white/[0.03] backdrop-blur-md px-4 py-2.5 md:px-6 md:py-3 text-white rounded-full font-semibold flex items-center gap-2 hover:scale-105 transition-all duration-300 font-['Nunito'] border border-purple-500/30 text-sm md:text-base whitespace-nowrap"
             >
               <Palette className="w-4 h-4 md:w-5 md:h-5" />
@@ -472,7 +473,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                 </div>
 
                 {/* Bottom Section - Blur Container with Purple Tint */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between border-t border-purple-300/30 z-10">
+                <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
                     {/* Small Circle Avatar */}
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">

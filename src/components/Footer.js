@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer
       style={{ width: 'clamp(576px, 100vw, 100%)' }}
-      className="relative z-10 md:w-full border-t border-white/[0.08] backdrop-blur-xl bg-black/20"
+      className="relative z-10 md:w-full backdrop-blur-xl"
     >
       <div className="container mx-auto px-6 md:px-6 py-8 md:py-10">
         <motion.div
