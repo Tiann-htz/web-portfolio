@@ -474,7 +474,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                     {/* Small Circle Avatar */}
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
                       <img
-  src="/image/image4.png"
+  src="/image/Image4.png"
   alt="Aizel"
   className="object-cover w-full h-full"
   style={{ objectPosition: 'center 85%', objectFit: 'cover' }}

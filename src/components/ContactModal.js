@@ -78,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }) {
                   {/* Avatar */}
                   <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-purple-400/50 shadow-lg shadow-purple-500/20 flex-shrink-0">
                     <Image
-                      src="/image/image4.png"
+                      src="/image/Image4.png"
                       alt="Aizel"
                       fill
                       className="object-cover"

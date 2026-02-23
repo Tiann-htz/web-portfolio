@@ -7,7 +7,7 @@ export const projectsData = [
     shortDescription: 'A beautifully crafted personal portfolio website showcasing my design sensibility and frontend skills, featuring smooth animations, glassmorphism effects, and a feminine aesthetic with purple-pink gradients.',
     techStack: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Figma'],
     images: [
-      '/image/image4.png',
+      '/projects/portfolio1.png',
     ],
     visitSite: null,
   },
