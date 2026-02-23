@@ -461,15 +461,12 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
               <div className="relative w-full h-full">
                 {/* Background Image - Full Card */}
                 <div className="absolute inset-0 z-0">
-                  <Image
-                    src="/image/image1.png"
-                    alt="Aizel"
-                    fill
-                    className="object-cover"
-                    style={{ 
-                      objectPosition: 'center 85%'
-                    }}
-                  />
+                  <img
+  src="/image/image1.png"
+  alt="Aizel"
+  className="object-cover w-full h-full"
+  style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
+/>
                 </div>
 
                 {/* Bottom Section - Blur Container with Purple Tint */}
