@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Github, Mail, Facebook, Eye, Palette } from 'lucide-react';
-import Image from 'next/image';
 import GlareHover from '@/components/ui/GlareHover';
 import ContactModal from '@/components/ContactModal';
 import About from '@/components/About';
@@ -462,7 +461,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                 {/* Background Image - Full Card */}
                 <div className="absolute inset-0 z-0">
                   <img
-  src="/image/image1.png"
+  src="/image/image4.png"
   alt="Aizel"
   className="object-cover w-full h-full"
   style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
@@ -474,12 +473,12 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                 <div className="flex items-center gap-3">
                     {/* Small Circle Avatar */}
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
-                      <Image
-                        src="/image/image1.png"
-                        alt="Aizel"
-                        fill
-                        className="object-cover"
-                      />
+                      <img
+  src="/image/image4.png"
+  alt="Aizel"
+  className="object-cover w-full h-full"
+  style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
+/>
                     </div>
                     {/* User Info */}
                     <div>
