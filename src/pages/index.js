@@ -461,7 +461,7 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
                 {/* Background Image - Full Card */}
                 <div className="absolute inset-0 z-0">
                   <img
-  src="/image/image4.png"
+  src="/image/Image4.png"
   alt="Aizel"
   className="object-cover w-full h-full"
   style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
