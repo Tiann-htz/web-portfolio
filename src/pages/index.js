@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Github, Mail, Facebook, Eye, Palette } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import GlareHover from '@/components/ui/GlareHover';
 import ContactModal from '@/components/ContactModal';
 import About from '@/components/About';
@@ -45,7 +46,7 @@ function Header() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = -10;
+      const headerOffset = -42;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -81,7 +82,7 @@ function Header() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            &lt;Aizel/&gt;
+            &lt;Roselda/&gt;
           </h1>
         </motion.div>
 
@@ -248,7 +249,6 @@ function AnimatedRoles({ roles }) {
 // Hero Section Component
 function HeroSection() {
   const router = useRouter();
-  const [tiltStyle, setTiltStyle] = useState({});
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   
   const roles = ['UI/UX Designer', 'Frontend Developer'];
@@ -264,29 +264,6 @@ function HeroSection() {
     { icon: Mail, href: 'mailto:aizel@example.com', label: 'Email' },
     { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
   ];
-
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-
-    setTiltStyle({
-      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
-      transition: 'transform 0.1s ease-out',
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setTiltStyle({
-      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-      transition: 'transform 0.3s ease-out',
-    });
-  };
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-8 pt-20">
@@ -334,7 +311,7 @@ function HeroSection() {
               transition={{ delay: 0.7 }}
               className="text-6xl md:text-7xl font-bold text-white font-['Playfair_Display'] leading-tight"
             >
-              Aizel
+              Roselda
             </motion.h1>
             
             {/* Animated Roles - Gradient + Special font */}
@@ -424,93 +401,33 @@ Crafting beautiful, thoughtful experiences where elegant design meets clean code
           </motion.div>
         </div>
 
-        {/* Right Side - Avatar Card with GlareHover */}
+        {/* Right Side - Lottie Animation */}
         <motion.div
           initial={{ opacity: 0, x: 100 }}
-          animate={{ 
-            opacity: 1, 
+          animate={{
+            opacity: 1,
             x: 80,
+            y: [0, -15, 0],
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.8, delay: 0.5 },
             x: { duration: 0.8, delay: 0.5, ease: 'easeOut' },
+            y: {
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 1.3,
+            },
           }}
           className="relative flex items-center justify-center"
         >
-          <GlareHover
-  width="350px"
-  height="420px"
-  background="rgba(255, 255, 255, 0.95)"
-  borderRadius="24px"
-  borderColor="rgba(168, 85, 247, 0.4)"
-  glareColor="#ffffff"
-  glareOpacity={0.7}
-            glareAngle={-30}
-            glareSize={400}
-            transitionDuration={3500}
-            playOnce={false}
-            style={tiltStyle}
-          >
-            <div
-              className="relative w-full h-full rounded-3xl overflow-hidden"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Card Content with Image as Background */}
-              <div className="relative w-full h-full">
-                {/* Background Image - Full Card */}
-                <div className="absolute inset-0 z-0">
-                  <img
-  src="/image/Image4.png"
-  alt="Aizel"
-  className="object-cover w-full h-full"
-  style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
-/>
-                </div>
-
-                {/* Bottom Section - Blur Container with Purple Tint */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between z-10">
-                <div className="flex items-center gap-3">
-                    {/* Small Circle Avatar */}
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
-                      <img
-  src="/image/Image4.png"
-  alt="Aizel"
-  className="object-cover w-full h-full"
-  style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
-/>
-                    </div>
-                    {/* User Info */}
-                    <div>
-                      <p className="text-white font-semibold text-sm font-['Nunito'] drop-shadow-lg">@Aizel.designs</p>
-                      <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 rounded-full bg-green-400 shadow-lg shadow-green-400/50 animate-pulse"></div>
-                        <span className="text-white text-xs font-['Nunito'] drop-shadow-md">Available</span>
-                      </div>
-                    </div>
-                  </div>
-
-                 {/* View Portfolio Button */}
-                  <button
-                    onClick={() => {
-                      const el = document.getElementById('portfolio');
-                      if (el) {
-                        const offset = el.getBoundingClientRect().top + window.pageYOffset - -20;
-                        window.scrollTo({ top: offset, behavior: 'smooth' });
-                      }
-                    }}
-                    className="px-4 py-2 rounded-lg text-sm font-semibold transition-all font-['Nunito'] drop-shadow-lg hover:scale-105 text-white"
-                    style={{
-                      background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                      boxShadow: '0 4px 16px rgba(168, 85, 247, 0.3)',
-                    }}
-                  >
-                    View Portfolio
-                  </button>
-                </div>
-              </div>
-            </div>
-          </GlareHover>
+          <div className="w-full max-w-[600px] h-[600px]">
+            <DotLottieReact
+  src="https://lottie.host/a8a0f2ec-1a6c-4e47-941f-9f8cbe194c44/jf2W2KoQ7w.lottie"
+              loop
+              autoplay
+            />
+          </div>
         </motion.div>
       </div>
 

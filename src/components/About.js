@@ -1,7 +1,33 @@
 import { motion } from 'framer-motion';
 import { Sparkles, FileText, Briefcase, FolderGit2, Award, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import GlareHover from '@/components/ui/GlareHover';
 
 export default function About() {
+  const [tiltStyle, setTiltStyle] = useState({});
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    setTiltStyle({
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
+      transition: 'transform 0.1s ease-out',
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTiltStyle({
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transition: 'transform 0.3s ease-out',
+    });
+  };
+
   const projects = [
     { id: 1, title: 'Portfolio Website', type: 'Web Design' },
     { id: 2, title: 'Brand Identity Design', type: 'UI/UX' },
@@ -40,13 +66,13 @@ export default function About() {
   const handleViewProjects = () => {
     const el = document.getElementById('portfolio');
     if (el) {
-      const offset = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      const offset = el.getBoundingClientRect().top + window.pageYOffset - -80;
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
 
   return (
-    <section id="about" className="min-h-screen w-max md:w-full flex items-center justify-center px-8 py-20 md:py-32">
+    <section id="about" className="min-h-screen w-max md:w-full flex items-center justify-center px-8 py-20 md:py-30">
 
       <div className="w-full">
 
@@ -168,60 +194,88 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side — quote card */}
+         {/* Right Side — Avatar Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center ml-28"
           >
-            <motion.div
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="relative rounded-3xl p-8 max-w-sm w-full border border-purple-500/20 bg-white/[0.03] backdrop-blur-md overflow-hidden group cursor-default"
-              style={{ boxShadow: '0 0 60px rgba(168, 85, 247, 0.08)' }}
+            <GlareHover
+              width="350px"
+              height="420px"
+              background="rgba(255, 255, 255, 0.95)"
+              borderRadius="24px"
+              borderColor="rgba(168, 85, 247, 0.4)"
+              glareColor="#ffffff"
+              glareOpacity={0.7}
+              glareAngle={-30}
+              glareSize={400}
+              transitionDuration={3500}
+              playOnce={false}
+              style={tiltStyle}
             >
               <div
-                className="absolute -top-10 -right-10 w-48 h-48 rounded-full opacity-20 blur-3xl pointer-events-none"
-                style={{ background: 'radial-gradient(circle, #a855f7, #ec4899)' }}
-              />
-              <p
-                className="text-3xl font-bold font-['Cormorant_Garamond'] leading-snug mb-6 relative z-10"
-                style={{
-                  background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
+                className="relative w-full h-full rounded-3xl overflow-hidden"
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
               >
-                "Design is not just what it looks like — it's how it makes you feel."
-              </p>
-              <div className="flex items-center gap-3 relative z-10">
-                <div
-                  className="w-10 h-[2px] rounded-full"
-                  style={{ background: 'linear-gradient(90deg, #a855f7, #ec4899)' }}
-                />
-                <span className="text-gray-400 text-sm font-['Nunito'] font-semibold tracking-wide uppercase">
-                  Aizel's Design Philosophy
-                </span>
+                <div className="relative w-full h-full">
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src="/image/Image4.png"
+                      alt="Aizel"
+                      className="object-cover w-full h-full"
+                      style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
+                    />
+                  </div>
+                  {/* Bottom Section */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1/5 bg-gradient-to-t from-purple-500/30 via-pink-500/20 to-transparent backdrop-blur-md p-4 flex items-center justify-between z-10">
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
+                        <img
+                          src="/image/Image4.png"
+                          alt="Aizel"
+                          className="object-cover w-full h-full"
+                          style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
+                        />
+                      </div>
+                      <div>
+                        <p className="text-white font-semibold text-sm font-['Nunito'] drop-shadow-lg">@Aizel.designs</p>
+                        <div className="flex items-center gap-1">
+                          <div className="w-2 h-2 rounded-full bg-green-400 shadow-lg shadow-green-400/50 animate-pulse"></div>
+                          <span className="text-white text-xs font-['Nunito'] drop-shadow-md">Available</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* View Portfolio Button */}
+                    <button
+                      onClick={() => {
+                        const el = document.getElementById('portfolio');
+                        if (el) {
+                          const offset = el.getBoundingClientRect().top + window.pageYOffset - -35;
+                          window.scrollTo({ top: offset, behavior: 'smooth' });
+                        }
+                      }}
+                      className="px-4 py-2 rounded-lg text-sm font-semibold transition-all font-['Nunito'] drop-shadow-lg hover:scale-105 text-white"
+                      style={{
+                        background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+                        boxShadow: '0 4px 16px rgba(168, 85, 247, 0.3)',
+                      }}
+                    >
+                      View Portfolio
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-6 relative z-10">
-                {['Figma', 'UI/UX', 'HTML', 'CSS', 'JavaScript', 'Prototyping'].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 rounded-full text-xs font-semibold font-['Nunito'] bg-white/[0.04] border border-purple-500/20 text-gray-300 hover:border-purple-400/40 hover:text-white transition-all duration-200 cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            </GlareHover>
           </motion.div>
         </div>
 
         {/* ── Stats Cards ── */}
-        <div className="container mx-auto px-6 md:px-6">
+        <div className="container mx-auto px-6 md:px-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
