@@ -1,10 +1,22 @@
 export const certificatesData = [
   {
     id: 1,
-    institution: 'Your Institution Here',
-    image: '/certificates/certificate1.png',
-    title: 'Certificate Title Here',
+        image: '/image/certificates/SQLCertificate.PNG',
+    title: 'SQL',
   },
+
+  {
+    id: 2,
+        image: '/image/certificates/udemy cert.PNG',
+    title: 'CMS Blog in PHP MySQL Bootstrap & PDO',
+  },
+
+{
+    id: 3,
+        image: '/image/certificates/MCITS.png',
+    title: 'Mindanao Conference of Information Technology (MCITS) 2024',
+  },
+
   // ─── Add Aizel's other certificates below this line ───
   // {
   //   id: 2,
@@ -13,6 +25,8 @@ export const certificatesData = [
   //   title: 'Certificate Title',
   // },
 ];
+
+
 
 export const groupedCertificates = certificatesData.reduce((acc, cert) => {
   if (!acc[cert.institution]) {

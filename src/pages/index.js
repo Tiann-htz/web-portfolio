@@ -260,9 +260,9 @@ function HeroSection() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Mail, href: 'mailto:aizel@example.com', label: 'Email' },
-    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
+    { icon: Github, href: 'https://github.com/aizelaparis', label: 'GitHub' },
+    { icon: Mail, href: 'mailto:roseldaapares@gmail.com', label: 'Email' },
+    { icon: Facebook, href: 'https://www.facebook.com/zhel.ai1121', label: 'Facebook' },
   ];
 
   return (

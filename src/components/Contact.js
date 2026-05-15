@@ -32,22 +32,22 @@ export default function Contact() {
     {
       icon: Instagram,
       title: 'Instagram',
-      subtitle: '@aizel.designs',
+      subtitle: '@Aizel',
       link: 'https://instagram.com',
       color: '#E4405F',
     },
     {
       icon: Github,
       title: 'GitHub',
-      subtitle: 'aizel',
-      link: 'https://github.com',
+      subtitle: 'aizelaparis',
+      link: 'https://github.com/aizelaparis',
       color: '#ffffff',
     },
     {
       icon: Facebook,
       title: 'Facebook',
-      subtitle: 'Aizel',
-      link: 'https://facebook.com',
+      subtitle: 'Aizel Aparis',
+      link: 'https://facebook.com/zhel.ai1121',
       color: '#1877F2',
     },
   ];

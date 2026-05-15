@@ -225,7 +225,7 @@ export default function About() {
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0">
                     <img
-                      src="/image/Image4.png"
+                      src="/image/image dp.jpeg"
                       alt="Aizel"
                       className="object-cover w-full h-full"
                       style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
@@ -236,14 +236,14 @@ export default function About() {
                     <div className="flex items-center gap-3">
                       <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0 shadow-lg">
                         <img
-                          src="/image/Image4.png"
+                          src="/image/Image1.png"
                           alt="Aizel"
                           className="object-cover w-full h-full"
                           style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
                         />
                       </div>
                       <div>
-                        <p className="text-white font-semibold text-sm font-['Nunito'] drop-shadow-lg">@Aizel.designs</p>
+                        <p className="text-white font-semibold text-sm font-['Nunito'] drop-shadow-lg">@Roselda Apares</p>
                         <div className="flex items-center gap-1">
                           <div className="w-2 h-2 rounded-full bg-green-400 shadow-lg shadow-green-400/50 animate-pulse"></div>
                           <span className="text-white text-xs font-['Nunito'] drop-shadow-md">Available</span>
