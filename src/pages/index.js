@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Github, Mail, Facebook, Eye, Palette } from 'lucide-react';
+import { Sparkles, Github, Linkedin, Facebook, Eye, Palette } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import GlareHover from '@/components/ui/GlareHover';
 import ContactModal from '@/components/ContactModal';
@@ -261,7 +261,7 @@ function HeroSection() {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/aizelaparis', label: 'GitHub' },
-    { icon: Mail, href: 'mailto:roseldaapares@gmail.com', label: 'Email' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/roselda-apares-b21420412/', label: 'LinkedIn' },
     { icon: Facebook, href: 'https://www.facebook.com/zhel.ai1121', label: 'Facebook' },
   ];
 

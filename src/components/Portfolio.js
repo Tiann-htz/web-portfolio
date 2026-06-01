@@ -14,9 +14,9 @@ export default function Portfolio() {
   const [selectedProjectImage, setSelectedProjectImage] = useState(null);
 
   const tabs = [
-    { id: 'projects',      name: 'Projects',     icon: FolderGit2 },
-    { id: 'certificates',  name: 'Certificates',  icon: Award      },
-    { id: 'techstack',     name: 'Tech Stack',    icon: Code2      },
+    { id: 'projects',     name: 'Projects',    icon: FolderGit2 },
+    { id: 'certificates', name: 'Certificates', icon: Award      },
+    { id: 'techstack',    name: 'Tech Stack',   icon: Code2      },
   ];
 
   const openModal = (project) => {
@@ -37,7 +37,7 @@ export default function Portfolio() {
   };
 
   return (
-<section id="portfolio" style={{ width: 'clamp(580px, 100vw, 100%)' }} className="min-h-screen md:w-full flex items-center justify-center px-6 py-20 md:py-32">
+    <section id="portfolio" style={{ width: 'clamp(580px, 100vw, 100%)' }} className="min-h-screen md:w-full flex items-center justify-center px-6 py-20 md:py-32">
       <div className="w-full">
 
         {/* ── Header ── */}
@@ -291,94 +291,134 @@ export default function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.45 }}
+                className="space-y-10 md:space-y-14"
               >
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-5">
+
+                {/* ── Tech Stack Section Label ── */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="flex items-center gap-3 justify-center"
+                >
+                  <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #a855f7)' }} />
+                  <h3
+                    className="text-xl md:text-2xl font-bold font-['Cormorant_Garamond']"
+                    style={gradientText}
+                  >
+                    Languages & Frameworks
+                  </h3>
+                  <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #ec4899, transparent)' }} />
+                </motion.div>
+
+                {/* Tech Stack Grid */}
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 md:gap-4">
                   {techStackData.map((tech, index) => (
                     <motion.div
                       key={tech.id}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false, amount: 0.2 }}
-                      whileHover={{ y: -8, scale: 1.08, transition: { duration: 0.15 } }}
-                      transition={{ delay: 0.05 + index * 0.05, duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="group flex flex-col items-center justify-center gap-2 md:gap-3 p-3 md:p-4 rounded-2xl border border-purple-500/15 bg-white/[0.03] backdrop-blur-md hover:border-purple-400/35 transition-all duration-300 cursor-default"
-                      onMouseEnter={e => e.currentTarget.style.boxShadow = '0 8px 32px rgba(168,85,247,0.15)'}
+                      whileHover={{ y: -6, transition: { duration: 0.15 } }}
+                      transition={{ delay: 0.05 + index * 0.05, duration: 0.35 }}
+                      className="group relative flex flex-col items-center gap-2.5 p-3 md:p-4 rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-md hover:border-purple-400/30 transition-all duration-300 cursor-default overflow-hidden"
+                      onMouseEnter={e => e.currentTarget.style.boxShadow = `0 8px 28px ${tech.color}22`}
                       onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
                     >
+                      {/* Subtle color glow bg on hover */}
                       <div
-                        className="w-10 h-10 md:w-14 md:h-14 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5 md:p-2"
-                        style={{ backgroundColor: `${tech.color}18` }}
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-2xl pointer-events-none"
+                        style={{ background: `radial-gradient(ellipse at 50% 0%, ${tech.color}14 0%, transparent 70%)` }}
+                      />
+
+                      {/* Icon */}
+                      <div
+                        className="relative w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0 p-2 transition-transform duration-200 group-hover:scale-110"
+                        style={{ backgroundColor: `${tech.color}18`, border: `1px solid ${tech.color}28` }}
                       >
                         <Image
                           src={tech.imageUrl}
                           alt={tech.name}
-                          width={48}
-                          height={48}
-                          className="group-hover:scale-110 transition-transform duration-200"
+                          width={32}
+                          height={32}
+                          className="object-contain"
                         />
                       </div>
-                      <span className="text-white text-[10px] md:text-xs font-semibold text-center font-['Nunito'] group-hover:text-purple-300 transition-colors">
+
+                      {/* Name */}
+                      <span
+                        className="text-[10px] md:text-xs font-semibold text-center font-['Nunito'] text-gray-300 group-hover:text-white transition-colors leading-tight"
+                      >
                         {tech.name}
                       </span>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Tools & IDE Section */}
+                {/* ── Divider ── */}
+                <div className="h-[1px] w-full rounded-full" style={{ background: 'linear-gradient(90deg, transparent, rgba(168,85,247,0.2), transparent)' }} />
+
+                {/* ── Tools Section Label ── */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="mt-10 md:mt-14"
+                  className="flex items-center gap-3 justify-center"
                 >
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex items-center gap-3 justify-center mb-6 md:mb-8"
+                  <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #a855f7)' }} />
+                  <h3
+                    className="text-xl md:text-2xl font-bold font-['Cormorant_Garamond']"
+                    style={gradientText}
                   >
-                    <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #a855f7)' }} />
-                    <h3
-                      className="text-xl md:text-2xl font-bold font-['Cormorant_Garamond']"
-                      style={gradientText}
-                    >
-                      Tools & IDE
-                    </h3>
-                    <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #ec4899, transparent)' }} />
-                  </motion.div>
-
-                  <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-5">
-                    {toolsData.map((tool, index) => (
-                      <motion.div
-                        key={tool.id}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        whileHover={{ y: -8, scale: 1.08, transition: { duration: 0.15 } }}
-                        transition={{ delay: 0.45 + index * 0.05, duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="group flex flex-col items-center justify-center gap-2 md:gap-3 p-3 md:p-4 rounded-2xl border border-purple-500/15 bg-white/[0.03] backdrop-blur-md hover:border-purple-400/35 transition-all duration-300 cursor-default"
-                        onMouseEnter={e => e.currentTarget.style.boxShadow = '0 8px 32px rgba(168,85,247,0.15)'}
-                        onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
-                      >
-                        <div
-                          className="w-10 h-10 md:w-14 md:h-14 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5 md:p-2"
-                          style={{ backgroundColor: `${tool.color}18` }}
-                        >
-                          <Image
-                            src={tool.imageUrl}
-                            alt={tool.name}
-                            width={48}
-                            height={48}
-                            className="group-hover:scale-110 transition-transform duration-200"
-                          />
-                        </div>
-                        <span className="text-white text-[10px] md:text-xs font-semibold text-center font-['Nunito'] group-hover:text-purple-300 transition-colors">
-                          {tool.name}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
+                    Tools & IDE
+                  </h3>
+                  <div className="h-[1px] w-12 md:w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #ec4899, transparent)' }} />
                 </motion.div>
+
+                {/* Tools Grid */}
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 md:gap-4">
+                  {toolsData.map((tool, index) => (
+                    <motion.div
+                      key={tool.id}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.2 }}
+                      whileHover={{ y: -6, transition: { duration: 0.15 } }}
+                      transition={{ delay: 0.35 + index * 0.05, duration: 0.35 }}
+                      className="group relative flex flex-col items-center gap-2.5 p-3 md:p-4 rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-md hover:border-purple-400/30 transition-all duration-300 cursor-default overflow-hidden"
+                      onMouseEnter={e => e.currentTarget.style.boxShadow = `0 8px 28px ${tool.color}22`}
+                      onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
+                    >
+                      {/* Subtle color glow bg on hover */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-2xl pointer-events-none"
+                        style={{ background: `radial-gradient(ellipse at 50% 0%, ${tool.color}14 0%, transparent 70%)` }}
+                      />
+
+                      {/* Icon */}
+                      <div
+                        className="relative w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0 p-2 transition-transform duration-200 group-hover:scale-110"
+                        style={{ backgroundColor: `${tool.color}18`, border: `1px solid ${tool.color}28` }}
+                      >
+                        <Image
+                          src={tool.imageUrl}
+                          alt={tool.name}
+                          width={32}
+                          height={32}
+                          className="object-contain"
+                        />
+                      </div>
+
+                      {/* Name */}
+                      <span
+                        className="text-[10px] md:text-xs font-semibold text-center font-['Nunito'] text-gray-300 group-hover:text-white transition-colors leading-tight"
+                      >
+                        {tool.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
               </motion.div>
             )}
           </AnimatePresence>
@@ -471,8 +511,6 @@ export default function Portfolio() {
                         ))}
                       </div>
                     </div>
-                    
-                      
                   </div>
                 </div>
               </motion.div>
