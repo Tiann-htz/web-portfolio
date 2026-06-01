@@ -282,7 +282,7 @@ export default function Contact() {
                   <div>
                     <p className="text-gray-400 text-xs md:text-sm font-['Nunito'] mb-0.5">Email me directly</p>
                     <p className="text-white text-sm md:text-base font-bold font-['Nunito']">
-                      aizel@example.com
+                      roseldaapares.com
                     </p>
                   </div>
                 </div>

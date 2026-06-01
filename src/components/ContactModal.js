@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, User, MessageCircle, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Mail, User, MessageCircle, Send, Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
+import { sendEmail } from '@/lib/emailjs';
 
 export default function ContactModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -11,23 +12,44 @@ export default function ContactModal({ isOpen, onClose }) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setEmailError('Please fill in all fields.');
+      setTimeout(() => setEmailError(''), 3000);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setEmailError('Please enter a valid email address.');
+      setTimeout(() => setEmailError(''), 3000);
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate sending (replace with actual email logic later)
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    // Reset after 2 seconds
-    setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({ name: '', email: '', message: '' });
-      onClose();
-    }, 2000);
+    setEmailError('');
+
+    try {
+      await sendEmail(formData.name, formData.email, formData.message);
+      setIsSuccess(true);
+
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({ name: '', email: '', message: '' });
+        onClose();
+      }, 2000);
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setEmailError('Failed to send message. Please try again.');
+      setTimeout(() => setEmailError(''), 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -60,8 +82,8 @@ export default function ContactModal({ isOpen, onClose }) {
             onClick={(e) => e.target === e.currentTarget && onClose()}
           >
             <div className="bg-gradient-to-br from-purple-950/40 to-pink-950/40 backdrop-blur-2xl border border-purple-500/30 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden">
-              
-              {/* Decorative gradient blob */}
+
+              {/* Decorative gradient blobs */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
 
@@ -84,7 +106,7 @@ export default function ContactModal({ isOpen, onClose }) {
                       className="object-cover"
                     />
                   </div>
-                  
+
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="text-2xl font-bold text-white font-['Cormorant_Garamond']">
@@ -112,7 +134,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="p-8 space-y-5 relative">
-                
+
                 {/* Success Overlay */}
                 <AnimatePresence>
                   {isSuccess && (
@@ -134,6 +156,19 @@ export default function ContactModal({ isOpen, onClose }) {
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* Error Message */}
+                {emailError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    className="flex items-center gap-2 p-3 rounded-xl text-sm font-['Nunito'] text-red-300 border border-red-500/20 bg-red-500/10"
+                  >
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    {emailError}
+                  </motion.div>
+                )}
 
                 {/* Name */}
                 <div>
@@ -197,7 +232,7 @@ export default function ContactModal({ isOpen, onClose }) {
                   whileTap={!isSubmitting && !isSuccess ? { scale: 0.98 } : {}}
                   className="w-full px-6 py-4 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 font-['Nunito'] disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
-                    background: isSuccess 
+                    background: isSuccess
                       ? 'linear-gradient(135deg, #10b981, #059669)'
                       : 'linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #ec4899 100%)',
                     boxShadow: '0 8px 32px rgba(168, 85, 247, 0.4)',

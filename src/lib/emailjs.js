@@ -9,9 +9,9 @@ import emailjs from '@emailjs/browser';
 //   4. Go to Account → API Keys → copy your Public Key below
 // ─────────────────────────────────────────────────────────────────────────────
 
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← Replace with your EmailJS Service ID
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← Replace with your EmailJS Template ID
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← Replace with your EmailJS Public Key
+const EMAILJS_SERVICE_ID  = 'service_lo7r7fn';   // ← Replace with your EmailJS Service ID
+const EMAILJS_TEMPLATE_ID = 'template_ws4ib6p';  // ← Replace with your EmailJS Template ID
+const EMAILJS_PUBLIC_KEY  = 's2aM_QnKT0uhCQtQk';   // ← Replace with your EmailJS Public Key
 
 // Initialize EmailJS with your public key
 emailjs.init(EMAILJS_PUBLIC_KEY);
