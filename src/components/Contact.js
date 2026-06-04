@@ -26,14 +26,14 @@ export default function Contact() {
       icon: Linkedin,
       title: "Let's Connect",
       subtitle: 'on LinkedIn',
-      link: 'https://linkedin.com',
+      link: 'https://www.linkedin.com/in/roselda-apares-b21420412/',
       color: '#0077B5',
     },
     {
       icon: Instagram,
       title: 'Instagram',
-      subtitle: '@Aizel',
-      link: 'https://instagram.com',
+      subtitle: '@Aizhel_ly',
+      link: 'https://www.instagram.com/aizhel_ly/',
       color: '#E4405F',
     },
     {
@@ -282,7 +282,7 @@ export default function Contact() {
                   <div>
                     <p className="text-gray-400 text-xs md:text-sm font-['Nunito'] mb-0.5">Email me directly</p>
                     <p className="text-white text-sm md:text-base font-bold font-['Nunito']">
-                      roseldaapares.com
+                      roseldaapares@gmail.com
                     </p>
                   </div>
                 </div>

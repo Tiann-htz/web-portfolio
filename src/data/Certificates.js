@@ -34,6 +34,14 @@ export const certificatesData = [
     institution: 'World of Adventures Travel and Tours',
   },
 
+  {
+    id: 6,
+    image: '/image/certificates/STEM ConnectHer.png',
+    title: 'SCH Job Readiness Workshop',
+    institution: 'STEM ConenctHER x HCDC',
+  },
+
+
   // ─── Add more certificates below this line ───
   // {
   //   id: 6,

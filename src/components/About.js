@@ -40,13 +40,13 @@ export default function About() {
 
   const stats = [
     {
-      number: projects.length.toString(),
+      number: '5',
       label: 'Total Projects',
       description: 'Creative works delivered',
       icon: FolderGit2,
     },
     {
-      number: certificates.length.toString(),
+      number: '6',
       label: 'Certificates',
       description: 'Professional certifications earned',
       icon: Award,
@@ -225,7 +225,7 @@ export default function About() {
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0">
                     <img
-                      src="/image/image dp.jpeg"
+                      src="/image/aizelllll.jpeg"
                       alt="Aizel"
                       className="object-cover w-full h-full"
                       style={{ objectPosition: 'center 85%', objectFit: 'cover' }}
