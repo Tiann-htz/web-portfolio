@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Sparkles, FileText, Briefcase, FolderGit2, Award, Calendar } from 'lucide-react';
 import { useState } from 'react';
 import GlareHover from '@/components/ui/GlareHover';
+import { projectsData } from '@/data/Projects';
+import { certificatesData } from '@/data/Certificates';
 
 export default function About() {
   const [tiltStyle, setTiltStyle] = useState({});
@@ -40,13 +42,13 @@ export default function About() {
 
   const stats = [
     {
-      number: '5',
+      number: projectsData.length.toString(),
       label: 'Total Projects',
       description: 'Creative works delivered',
       icon: FolderGit2,
     },
     {
-      number: '6',
+      number: certificatesData.length.toString(),
       label: 'Certificates',
       description: 'Professional certifications earned',
       icon: Award,

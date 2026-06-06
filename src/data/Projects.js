@@ -16,7 +16,6 @@ export const projectsData = [
       '/image/projects/Habify 7.png',
       '/image/projects/Habify 8.png',
       '/image/projects/Habify 9.png',
-      
     ],
     visitSite: null,
   },
@@ -41,6 +40,33 @@ export const projectsData = [
   {
     id: 3,
     order: 3,
+    title: 'PetShop POS',
+    type: 'Desktop App',
+    shortDescription: 'An OJT project assigned by the company to build a point-of-sale system for their pet shop business. Handles product lookup, cart management, billing, discounts, and receipt generation — all from one clean and fast desktop interface.',
+    techStack: ['C#', 'Windows Forms', 'MySQL', 'iText7'],
+    images: [
+      '/image/projects/petshop1.png',
+      '/image/projects/petshop2.png',
+      '/image/projects/petshop3.png',
+      '/image/projects/petshop4.png',
+      '/image/projects/petshop5.png',
+      '/image/projects/petshop6.png',
+      '/image/projects/petshop7.png',
+      '/image/projects/petshop8.png',
+      '/image/projects/petshop9.png',
+      '/image/projects/petshop10.png',
+      '/image/projects/petshop11.png',
+      '/image/projects/petshop12.png',
+      '/image/projects/petshop13.png',
+      '/image/projects/petshop14.png',
+    ],
+    visitSite: null,
+    tag: 'OJT Project',
+  },
+
+  {
+    id: 4,
+    order: 4,
     title: 'Chronyx Mobile App',
     type: 'Mobile App',
     shortDescription: 'A mobile application that connects to the Chronyx admin portal, featuring QR code functionality for employee check-ins, attendance tracking, and salary management.',
@@ -57,8 +83,8 @@ export const projectsData = [
   },
 
   {
-    id: 4,
-    order: 4,
+    id: 5,
+    order: 5,
     title: 'Chronyx Admin Portal',
     type: 'Web System',
     shortDescription: 'An admin web portal for managing employee attendance and payroll. Features camera integration for QR scanning, automated payroll processing, employee management, and comprehensive dashboard analytics.',
@@ -73,8 +99,8 @@ export const projectsData = [
   },
 
   {
-    id: 5,
-    order: 5,
+    id: 6,
+    order: 6,
     title: 'Library Management System',
     type: 'Web System',
     shortDescription: 'A modern library management system built with Django 4.2 and MySQL.',
@@ -93,8 +119,8 @@ export const projectsData = [
 
   // ─── Add more projects below this line ───
   // {
-  //   id: 6,
-  //   order: 6,
+  //   id: 7,
+  //   order: 7,
   //   title: 'Project Title Here',
   //   type: 'UI/UX Design / Web Design / Frontend / etc.',
   //   shortDescription: 'Short description of the project.',
